@@ -1,0 +1,14 @@
+H:\Software_development\Favourite_project\Favourite_project\bin\Debug\Favourite_project.exe.config
+H:\Software_development\Favourite_project\Favourite_project\bin\Debug\Favourite_project.exe
+H:\Software_development\Favourite_project\Favourite_project\bin\Debug\Favourite_project.pdb
+H:\Software_development\Favourite_project\Favourite_project\obj\Debug\Favourite_project.csprojResolveAssemblyReference.cache
+H:\Software_development\Favourite_project\Favourite_project\obj\Debug\Favourite_project.Form1.resources
+H:\Software_development\Favourite_project\Favourite_project\obj\Debug\Favourite_project.Properties.Resources.resources
+H:\Software_development\Favourite_project\Favourite_project\obj\Debug\Favourite_project.csproj.GenerateResource.Cache
+H:\Software_development\Favourite_project\Favourite_project\obj\Debug\Favourite_project.csproj.CoreCompileInputs.cache
+H:\Software_development\Favourite_project\Favourite_project\obj\Debug\Favourite_project.exe
+H:\Software_development\Favourite_project\Favourite_project\obj\Debug\Favourite_project.pdb
+H:\Software_development\Favourite_project\Favourite_project\bin\Debug\MySql.Data.dll
+H:\Software_development\Favourite_project\Favourite_project\bin\Debug\Google.Protobuf.dll
+H:\Software_development\Favourite_project\Favourite_project\bin\Debug\BouncyCastle.Crypto.dll
+H:\Software_development\Favourite_project\Favourite_project\bin\Debug\MySql.Data.xml
