@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btn_cow_reset = new System.Windows.Forms.Button();
+            this.btn_cow_search = new System.Windows.Forms.Button();
+            this.tb_cow_search_cow_id = new System.Windows.Forms.TextBox();
             this.tb_cow_death = new System.Windows.Forms.TextBox();
             this.tb_cow_mother_id = new System.Windows.Forms.TextBox();
             this.cb_cow_color = new System.Windows.Forms.ComboBox();
@@ -77,6 +80,9 @@
             this.btn_med_type_insert = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tb_list_search_cow_id = new System.Windows.Forms.TextBox();
+            this.btn_list_reset = new System.Windows.Forms.Button();
+            this.dt_list_med_end = new System.Windows.Forms.DateTimePicker();
             this.rtb_list_misc = new System.Windows.Forms.RichTextBox();
             this.dgv_list = new System.Windows.Forms.DataGridView();
             this.list_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -169,7 +175,10 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.dt_list_med_end = new System.Windows.Forms.DateTimePicker();
+            this.btn_list_search = new System.Windows.Forms.Button();
+            this.btn_insemination_search = new System.Windows.Forms.Button();
+            this.tb_insemination_search = new System.Windows.Forms.TextBox();
+            this.btn_insemination_reset = new System.Windows.Forms.Button();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cow)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -193,6 +202,9 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btn_cow_reset);
+            this.tabPage4.Controls.Add(this.btn_cow_search);
+            this.tabPage4.Controls.Add(this.tb_cow_search_cow_id);
             this.tabPage4.Controls.Add(this.tb_cow_death);
             this.tabPage4.Controls.Add(this.tb_cow_mother_id);
             this.tabPage4.Controls.Add(this.cb_cow_color);
@@ -222,6 +234,33 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Tehenek";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btn_cow_reset
+            // 
+            this.btn_cow_reset.Location = new System.Drawing.Point(734, 280);
+            this.btn_cow_reset.Name = "btn_cow_reset";
+            this.btn_cow_reset.Size = new System.Drawing.Size(22, 20);
+            this.btn_cow_reset.TabIndex = 27;
+            this.btn_cow_reset.Text = "R";
+            this.btn_cow_reset.UseVisualStyleBackColor = true;
+            this.btn_cow_reset.Click += new System.EventHandler(this.btn_cow_reset_Click);
+            // 
+            // btn_cow_search
+            // 
+            this.btn_cow_search.Location = new System.Drawing.Point(499, 278);
+            this.btn_cow_search.Name = "btn_cow_search";
+            this.btn_cow_search.Size = new System.Drawing.Size(75, 23);
+            this.btn_cow_search.TabIndex = 26;
+            this.btn_cow_search.Text = "Keresés";
+            this.btn_cow_search.UseVisualStyleBackColor = true;
+            this.btn_cow_search.Click += new System.EventHandler(this.btn_cow_search_Click);
+            // 
+            // tb_cow_search_cow_id
+            // 
+            this.tb_cow_search_cow_id.Location = new System.Drawing.Point(596, 281);
+            this.tb_cow_search_cow_id.Name = "tb_cow_search_cow_id";
+            this.tb_cow_search_cow_id.Size = new System.Drawing.Size(120, 20);
+            this.tb_cow_search_cow_id.TabIndex = 25;
             // 
             // tb_cow_death
             // 
@@ -526,9 +565,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(65, 120);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 2;
-            this.label10.Text = "Típus:";
+            this.label10.Text = "Fajta:";
             // 
             // label9
             // 
@@ -649,6 +688,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btn_list_search);
+            this.tabPage1.Controls.Add(this.tb_list_search_cow_id);
+            this.tabPage1.Controls.Add(this.btn_list_reset);
             this.tabPage1.Controls.Add(this.dt_list_med_end);
             this.tabPage1.Controls.Add(this.rtb_list_misc);
             this.tabPage1.Controls.Add(this.dgv_list);
@@ -672,11 +714,35 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // tb_list_search_cow_id
+            // 
+            this.tb_list_search_cow_id.Location = new System.Drawing.Point(610, 200);
+            this.tb_list_search_cow_id.Name = "tb_list_search_cow_id";
+            this.tb_list_search_cow_id.Size = new System.Drawing.Size(100, 20);
+            this.tb_list_search_cow_id.TabIndex = 18;
+            // 
+            // btn_list_reset
+            // 
+            this.btn_list_reset.Location = new System.Drawing.Point(730, 197);
+            this.btn_list_reset.Name = "btn_list_reset";
+            this.btn_list_reset.Size = new System.Drawing.Size(23, 23);
+            this.btn_list_reset.TabIndex = 17;
+            this.btn_list_reset.Text = "R";
+            this.btn_list_reset.UseVisualStyleBackColor = true;
+            this.btn_list_reset.Click += new System.EventHandler(this.btn_list_reset_Click);
+            // 
+            // dt_list_med_end
+            // 
+            this.dt_list_med_end.Location = new System.Drawing.Point(553, 40);
+            this.dt_list_med_end.Name = "dt_list_med_end";
+            this.dt_list_med_end.Size = new System.Drawing.Size(200, 20);
+            this.dt_list_med_end.TabIndex = 15;
+            // 
             // rtb_list_misc
             // 
             this.rtb_list_misc.Location = new System.Drawing.Point(553, 89);
             this.rtb_list_misc.Name = "rtb_list_misc";
-            this.rtb_list_misc.Size = new System.Drawing.Size(200, 114);
+            this.rtb_list_misc.Size = new System.Drawing.Size(200, 76);
             this.rtb_list_misc.TabIndex = 14;
             this.rtb_list_misc.Text = "";
             // 
@@ -1389,6 +1455,9 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.btn_insemination_reset);
+            this.tabPage9.Controls.Add(this.tb_insemination_search);
+            this.tabPage9.Controls.Add(this.btn_insemination_search);
             this.tabPage9.Controls.Add(this.btn_insemination_delete);
             this.tabPage9.Controls.Add(this.btn_insemination_update);
             this.tabPage9.Controls.Add(this.btn_insemination_insert);
@@ -1565,9 +1634,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(414, 44);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(131, 13);
+            this.label19.Size = new System.Drawing.Size(130, 13);
             this.label19.TabIndex = 2;
-            this.label19.Text = "Megtermékenyítés típusa:";
+            this.label19.Text = "Megtermékenyítés Módja:";
             // 
             // label18
             // 
@@ -1587,12 +1656,42 @@
             this.label17.TabIndex = 0;
             this.label17.Text = "Dátum:";
             // 
-            // dt_list_med_end
+            // btn_list_search
             // 
-            this.dt_list_med_end.Location = new System.Drawing.Point(553, 40);
-            this.dt_list_med_end.Name = "dt_list_med_end";
-            this.dt_list_med_end.Size = new System.Drawing.Size(200, 20);
-            this.dt_list_med_end.TabIndex = 15;
+            this.btn_list_search.Location = new System.Drawing.Point(513, 197);
+            this.btn_list_search.Name = "btn_list_search";
+            this.btn_list_search.Size = new System.Drawing.Size(75, 23);
+            this.btn_list_search.TabIndex = 19;
+            this.btn_list_search.Text = "Keresés";
+            this.btn_list_search.UseVisualStyleBackColor = true;
+            this.btn_list_search.Click += new System.EventHandler(this.btn_list_search_Click);
+            // 
+            // btn_insemination_search
+            // 
+            this.btn_insemination_search.Location = new System.Drawing.Point(513, 145);
+            this.btn_insemination_search.Name = "btn_insemination_search";
+            this.btn_insemination_search.Size = new System.Drawing.Size(75, 23);
+            this.btn_insemination_search.TabIndex = 12;
+            this.btn_insemination_search.Text = "Keresés";
+            this.btn_insemination_search.UseVisualStyleBackColor = true;
+            this.btn_insemination_search.Click += new System.EventHandler(this.btn_insemination_search_Click);
+            // 
+            // tb_insemination_search
+            // 
+            this.tb_insemination_search.Location = new System.Drawing.Point(610, 147);
+            this.tb_insemination_search.Name = "tb_insemination_search";
+            this.tb_insemination_search.Size = new System.Drawing.Size(100, 20);
+            this.tb_insemination_search.TabIndex = 13;
+            // 
+            // btn_insemination_reset
+            // 
+            this.btn_insemination_reset.Location = new System.Drawing.Point(732, 145);
+            this.btn_insemination_reset.Name = "btn_insemination_reset";
+            this.btn_insemination_reset.Size = new System.Drawing.Size(19, 23);
+            this.btn_insemination_reset.TabIndex = 14;
+            this.btn_insemination_reset.Text = "R";
+            this.btn_insemination_reset.UseVisualStyleBackColor = true;
+            this.btn_insemination_reset.Click += new System.EventHandler(this.btn_insemination_reset_Click);
             // 
             // Form1
             // 
@@ -1782,6 +1881,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn list_medicine_expiry;
         private System.Windows.Forms.DataGridViewTextBoxColumn list_medicine_dosage_method;
         private System.Windows.Forms.DateTimePicker dt_list_med_end;
+        private System.Windows.Forms.Button btn_cow_search;
+        private System.Windows.Forms.TextBox tb_cow_search_cow_id;
+        private System.Windows.Forms.Button btn_cow_reset;
+        private System.Windows.Forms.TextBox tb_list_search_cow_id;
+        private System.Windows.Forms.Button btn_list_reset;
+        private System.Windows.Forms.Button btn_list_search;
+        private System.Windows.Forms.Button btn_insemination_reset;
+        private System.Windows.Forms.TextBox tb_insemination_search;
+        private System.Windows.Forms.Button btn_insemination_search;
     }
 }
 

@@ -1101,7 +1101,7 @@ namespace Favourite_project
 
         private void show_cow_table()
         {
-            string sql = "SELECT cow_primary_key,cow_id, cow_mother_id, cow_cow_type_id,cow_type_name, cow_cow_sex_id,cow_sex_name, cow_color_id,cow_color_name, cow_birth, cow_death, cow_cow_pregnant_id, cow_pregnant_name, cow_cow_age_type_id, cow_age_type_name FROM cow INNER JOIN cow_age_type ON cow_age_type_id = cow_cow_age_type_id INNER JOIN cow_type ON cow_type_id = cow_cow_type_id INNER JOIN cow_sex ON cow_sex_id = cow_cow_sex_id INNER JOIN cow_color ON cow_color_id = cow_cow_color_id INNER JOIN cow_pregnant ON cow_cow_pregnant_id = cow_pregnant_id ";
+            string sql = "SELECT cow_primary_key,cow_id, cow_mother_id, cow_cow_type_id,cow_type_name, cow_cow_sex_id,cow_sex_name, cow_color_id,cow_color_name, cow_birth, cow_death, cow_cow_pregnant_id, cow_pregnant_name, cow_cow_age_type_id, cow_age_type_name FROM cow INNER JOIN cow_age_type ON cow_age_type_id = cow_cow_age_type_id INNER JOIN cow_type ON cow_type_id = cow_cow_type_id INNER JOIN cow_sex ON cow_sex_id = cow_cow_sex_id INNER JOIN cow_color ON cow_color_id = cow_cow_color_id INNER JOIN cow_pregnant ON cow_cow_pregnant_id = cow_pregnant_id ORDER BY cow_primary_key DESC ";
 
             using (conn = new MySqlConnection(connection_string))
             {
@@ -1418,12 +1418,51 @@ namespace Favourite_project
             }
 
         }
+        //Keresés metódus
+        private void cow_search(string cow_id)
+        {
+            string sql ="SELECT cow_primary_key,cow_id, cow_mother_id, cow_cow_type_id,cow_type_name, cow_cow_sex_id,cow_sex_name, cow_color_id,cow_color_name, cow_birth, cow_death, cow_cow_pregnant_id, cow_pregnant_name, cow_cow_age_type_id, cow_age_type_name FROM cow INNER JOIN cow_age_type ON cow_age_type_id = cow_cow_age_type_id INNER JOIN cow_type ON cow_type_id = cow_cow_type_id INNER JOIN cow_sex ON cow_sex_id = cow_cow_sex_id INNER JOIN cow_color ON cow_color_id = cow_cow_color_id INNER JOIN cow_pregnant ON cow_cow_pregnant_id = cow_pregnant_id WHERE cow_id = '"+cow_id+"'";
+
+            using (conn = new MySqlConnection(connection_string))
+            {
+                conn.Open();
+
+                dt = new DataTable();
+
+                adapter = new MySqlDataAdapter(sql, conn);
+
+                adapter.Fill(dt);
+
+                dgv_cow.DataSource = dt;
+
+            }
+        }
+
+        private void btn_cow_search_Click(object sender, EventArgs e)
+        {
+            string cow_id;
+
+            cow_id = tb_cow_search_cow_id.Text;
+
+            if (tb_cow_search_cow_id.Text != "")
+            {
+                cow_search(cow_id);
+
+            }
+            else
+                global_empty_box();
+        }
+
+        private void btn_cow_reset_Click(object sender, EventArgs e)
+        {
+            show_cow_table();
+        }
 
 
-                                                                                    //Tehenek rész vége!!!!!!!!!!!!!!!!!
+                                                                                                //Tehenek rész vége!!!!!!!!!!!!!!!!!
 
-                                                                                    
-                                                                                    //Megtermékenyítés típusa kezdete!!!!!!!!!!!!!
+
+                                                                                                //Megtermékenyítés típusa kezdete!!!!!!!!!!!!!
 
         private void clear_insemination_type_fields()
         {
@@ -1564,12 +1603,14 @@ namespace Favourite_project
             }
         }
 
+        
 
-                                                                            //Megtermékenyítés típusa vége!!!!!!!!!!!!!
+
+                                                                                           //Megtermékenyítés típusa vége!!!!!!!!!!!!!
 
 
-                                                                            
-                                                                            //Megtermékenyítése rész kezdete!!!!!!!!!!!!!
+
+                                                                                           //Megtermékenyítése rész kezdete!!!!!!!!!!!!!
 
         private void clear_insemination_fields()
         {
@@ -1583,7 +1624,7 @@ namespace Favourite_project
 
         private void show_insemination_table()
         {
-            string sql = "SELECT cow_insemination_id, cow_insemination_date, cow_insemination_cow_id, cow_insemination_cow_insemination_type_id, cow_insemination_type_method, cow_insemination_cow_insemination_success_id, cow_insemination_success_name FROM cow_insemination INNER JOIN cow ON cow_id = cow_insemination_cow_id INNER JOIN cow_insemination_type ON cow_insemination_type_id = cow_insemination_cow_insemination_type_id INNER JOIN cow_insemination_success ON cow_insemination_cow_insemination_success_id = cow_insemination_success_id";
+            string sql = "SELECT cow_insemination_id, cow_insemination_date, cow_insemination_cow_id, cow_insemination_cow_insemination_type_id, cow_insemination_type_method, cow_insemination_cow_insemination_success_id, cow_insemination_success_name FROM cow_insemination INNER JOIN cow ON cow_id = cow_insemination_cow_id INNER JOIN cow_insemination_type ON cow_insemination_type_id = cow_insemination_cow_insemination_type_id INNER JOIN cow_insemination_success ON cow_insemination_cow_insemination_success_id = cow_insemination_success_id ORDER BY cow_insemination_date DESC";
 
             using (conn = new MySqlConnection(connection_string))
             {
@@ -1781,11 +1822,46 @@ namespace Favourite_project
                 chb_insemination_successful.CheckState = CheckState.Unchecked;
         }
 
-                                                                                //Megtermékenyítés rész vége!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        private void insemination_search(string cow_id)
+        {
+            string sql = "SELECT cow_insemination_id, cow_insemination_date, cow_insemination_cow_id, cow_insemination_cow_insemination_type_id, cow_insemination_type_method, cow_insemination_cow_insemination_success_id, cow_insemination_success_name FROM cow_insemination INNER JOIN cow ON cow_id = cow_insemination_cow_id INNER JOIN cow_insemination_type ON cow_insemination_type_id = cow_insemination_cow_insemination_type_id INNER JOIN cow_insemination_success ON cow_insemination_cow_insemination_success_id = cow_insemination_success_id WHERE cow_id = '"+cow_id+"'";
+
+            using (conn = new MySqlConnection(connection_string))
+            {
+                conn.Open();
+
+                adapter = new MySqlDataAdapter(sql, conn);
+
+                dt = new DataTable();
+
+                adapter.Fill(dt);
+
+                dgv_insemination.DataSource = dt;
+            }
+        }
+
+        private void btn_insemination_search_Click(object sender, EventArgs e)
+        {
+            string cow_id;
+
+            cow_id = tb_insemination_search.Text;
+
+            if (tb_insemination_search.Text != "")
+            {
+                insemination_search(cow_id);
+            }
+            else
+                global_empty_box();
+        }
+
+        
+
+
+                                                                                        //Megtermékenyítés rész vége!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
-                                                                                //Gyógyszeres kezelések kezdete!!!!!!!!!!!!!!!!!!!!!!!!!!
+                                                                                        //Gyógyszeres kezelések kezdete!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
@@ -1808,7 +1884,7 @@ namespace Favourite_project
 
         private void show_list_table()
         {
-            string sql = "SELECT list_id, list_cow_id, list_medicine_id, medicine_name, medicine_type_name, list_medicine_start, list_medicine_expiry, list_medicine_dosage_method FROM list INNER JOIN medicine ON list_medicine_id = medicine_id INNER JOIN cow ON list_cow_id = cow_id INNER JOIN medicine_type ON medicine_type_id = medicine_medicine_type_id";
+            string sql = "SELECT list_id, list_cow_id, list_medicine_id, medicine_name, medicine_type_name, list_medicine_start, list_medicine_expiry, list_medicine_dosage_method FROM list INNER JOIN medicine ON list_medicine_id = medicine_id INNER JOIN cow ON list_cow_id = cow_id INNER JOIN medicine_type ON medicine_type_id = medicine_medicine_type_id ORDER BY list_medicine_expiry DESC";
 
 
             using (conn = new MySqlConnection(connection_string))
@@ -1995,9 +2071,65 @@ namespace Favourite_project
 
             rtb_list_misc.Text = dgv_list.CurrentRow.Cells[7].Value.ToString();
         }
+
+        
+
+        //Keresés metódus
+        private void list_cow_search(string cow_id)
+        {
+            string sql = "SELECT list_id, list_cow_id, list_medicine_id, medicine_name, medicine_type_name, list_medicine_start, list_medicine_expiry, list_medicine_dosage_method FROM list INNER JOIN medicine ON list_medicine_id = medicine_id INNER JOIN cow ON list_cow_id = cow_id INNER JOIN medicine_type ON medicine_type_id = medicine_medicine_type_id WHERE list_cow_id = '"+cow_id+"'";
+
+            using (conn = new MySqlConnection(connection_string))
+            {
+                conn.Open();
+
+                dt = new DataTable();
+
+                adapter = new MySqlDataAdapter(sql, conn);
+
+                adapter.Fill(dt);
+
+                dgv_list.DataSource = dt;
+
+            }
+
+            
+        }
+
+        private void btn_list_search_Click(object sender, EventArgs e)
+        {
+            string cow_id;
+
+            cow_id = tb_list_search_cow_id.Text;
+
+            if (tb_list_search_cow_id.Text != "")
+            {
+                list_cow_search(cow_id: cow_id);
+                
+            }
+            else
+                global_empty_box();
+
+        }
+
+
+        //R gombra kattintás (reset)
+        private void btn_list_reset_Click(object sender, EventArgs e)
+        {
+            show_list_table();
+        }
+
+        private void btn_insemination_reset_Click(object sender, EventArgs e)
+        {
+            show_insemination_table();
+        }
     }
 
+   
 
-                                                                                    //Gyógyszeres kezelések vége!!!!!!!!!!!!!!!!!!!!!!!!!!
+   
+
+
+                                                                                             //Gyógyszeres kezelések vége!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 }
