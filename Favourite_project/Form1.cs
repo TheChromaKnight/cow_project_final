@@ -187,11 +187,7 @@ namespace Favourite_project
                 
                 cmd.ExecuteNonQuery();
 
-                global_success_update_box();
-
-                clear_med_type_fields();
-
-                med_combobox_fill();
+                
 
             }
 
@@ -207,7 +203,13 @@ namespace Favourite_project
             name = tb_med_type.Text;
 
             med_type_update(name, id);
-            
+
+            global_success_update_box();
+
+            clear_med_type_fields();
+
+            med_combobox_fill();
+
             show_med_type_table();
             
         }
@@ -225,9 +227,7 @@ namespace Favourite_project
 
                 cmd.ExecuteNonQuery();
 
-                global_success_delete_box();
-
-                med_combobox_fill();
+               
 
 
 
@@ -246,7 +246,11 @@ namespace Favourite_project
 
                     clear_med_type_fields();
 
-                    show_med_type_table();
+                    global_success_delete_box();
+
+                    med_combobox_fill();
+
+                show_med_type_table();
                 }
                
             
@@ -1994,6 +1998,6 @@ namespace Favourite_project
     }
 
 
-                                                                                    //Gyógyszeres kezelések kezdete!!!!!!!!!!!!!!!!!!!!!!!!!!
+                                                                                    //Gyógyszeres kezelések vége!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 }
